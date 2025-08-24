@@ -7,7 +7,8 @@ def click_boton(caracter):
 
     if caracter == '=':
         try:
-            result = eval(current_text)
+            expresion = current_text.replace('^', "**")
+            result = eval(expresion)
             display.delete(0, tk.END)
             display.insert(tk.END, str(result))
 
@@ -15,15 +16,8 @@ def click_boton(caracter):
             display.delete(0, tk.END)
             display.insert(tk.END, "Error")
 
-    elif caracter == 'x!':
-        try:
-            result = eval(current_text)
-            total = math.factorial(result)
-            display.delete(0, tk.END)
-            display.insert(tk.END, str(total))
-        except Exception:
-            display.delete(0, tk.END)
-            display.insert(tk.END, "Error")
+    elif caracter == '^':
+            display.insert(tk.END, '^')
 
     elif caracter == 'sin':
         try:
@@ -131,6 +125,16 @@ def click_boton(caracter):
             display.delete(0, tk.END)
             display.insert(tk.END, "Error")
 
+    elif caracter == 'x!':
+        try:
+            result = eval(current_text)
+            total = math.factorial(result)
+            display.delete(0, tk.END)
+            display.insert(tk.END, str(total))
+        except Exception:
+            display.delete(0, tk.END)
+            display.insert(tk.END, "Error")
+
     elif caracter == 'C':
         display.delete(0, tk.END)
     else:
@@ -162,11 +166,11 @@ root.grid_columnconfigure(6, weight=1)
 display = tk.Entry(root, font=("Arial", 20), bd=5, justify="right")
 display.grid(row=0, column=0, columnspan=7, sticky=tk.NSEW, padx=5, pady=5)
 
-botones = ['x!','sin','ln','7','8','9','/',
+botones = ['EXP','sin','ln','7','8','9','/',
            'π','cos','log','4','5','6','*',
            'e','tan','√','1','2','3','-',
            'x²','(',')','0','.','=','+',
-           'x³','%','C',]
+           'x³','^','x!','%','C',]
 
 row_num = 1
 col_num = 0
