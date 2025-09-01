@@ -19,6 +19,9 @@ def click_boton(caracter):
     elif caracter == '^':
             display.insert(tk.END, '^')
 
+    elif caracter == 'EXP':
+            display.insert(tk.END, 'e')
+
     elif caracter == 'sin':
         try:
             result = eval(current_text)
